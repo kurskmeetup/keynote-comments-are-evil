@@ -1,0 +1,188 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+	<title>Комментарии — зло</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=792, user-scalable=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<link rel="stylesheet" href="shower/themes/bright/styles/screen.css">
+</head>
+<body class="list">
+	<header class="caption">
+		<h1>Комментарии — зло</h1>
+		<p><a href="https://github.com/vast">Василий Половнёв</a>, безработный</p>
+	</header>
+
+	<section class="slide" id="Cover"><div>
+		<h2>Комментарии — зло</h2>
+		<p>Пожалуйста, хватит</p>
+		<p class="note">Василий Половнёв, безработный</p>
+	</div></section>
+
+	<section class="slide">
+		<div>
+		  <h2>В этом выступлении не обсуждаются</h2>
+			<ul>
+				<li>Clojure</li>
+				<li>Функциональный Подход</li>
+				<li>FreeBSD</li>
+				<li>Erlang</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Какие бывают комментарии</h2>
+			<ul>
+				<li>закомментированный код;</li>
+				<li>капитанские;</li>
+				<li>комментарии-зарубки;</li>
+				<li>вонючие.</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Закомментированный код</h2>
+			<pre>
+			  <code>// var fibonacci = function(n) {</code>
+			  <code>//  if (n < 2){</code>
+			  <code>//    return 1;</code>
+			  <code>//  } else {</code>
+			  <code>//    return fibonacci(n-2) + fibonacci(n-1);</code>
+			  <code>//  }</code>
+			  <code>// }</code>
+			  <code>finallyMakeSomethingUseful();</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Закомментированный код</h2>
+			<p>Мешает чтению и пониманию <em>кода</em>, увеличивает риск пропустить работающий код.</p>
+			<p>Удаляйте без сомнений. Понадобится — возьмете из истории Гита.</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Капитанские комментарии</h2>
+			<pre>
+				<code><mark>&lt;!-- header --&gt;</mark> &lt;header id="header"&gt;</code>
+			</pre>
+
+			<pre>
+				<code><mark>// close connection</mark></code>
+				<code>connection.close();</code>
+			</pre>
+			<pre>
+				<code><mark>// if connection status is 0</mark></code>
+				<code>if (connection.status === 0)</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Капитанские комментарии</h2>
+			<p>Объясняют очевидное: <em>что</em> делает код. В них нет ни смысла, ни пользы, а глаз спотыкается.</p>
+			<p>Удаляйте. Или выражайте мысль в коде:</p>
+			<pre>
+				<code>if (connection.status === 0) &rarr; if (<mark>connection.isOpen()</mark>)</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Комментарии-зарубки</h2>
+			<pre>
+				<code>// TODO: move it somewhere else</code>
+			</pre>
+			<pre>
+				<code>// FIXME: sorry, I didn't have enough time to fix it properly</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Комментарии-зарубки</h2>
+			<p>Отвлекают, заставляют чувствовать себя виноватым.</p>
+			<p>Технический долг. Выносите такие комментарии в трекеры задач: Джира, Трелло, Бейскамп.</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Вонючие комментарии</h2>
+			<pre>
+			  <code><mark>// 38 — line height in Firefox</mark></code>
+				<code>delta = event.deltaY * 38</code>
+			</pre>
+
+			<pre>
+				<code><mark>// make the user admin in the current project</mark></code>
+				<code>var membership = account.memberships.where({ userId: user.id }).first() </code>
+				<code>account.roles</code>
+				<code>  .where({ membershipId: membership.id }</code>
+				<code>  .updateAll(...))</code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Вонючие комментарии</h2>
+			<p>Пытаются оправдать херовый код. Признак того, что вы не смогли выразить свою мысль ясно в коде.</p>
+			<p>Удаляйте и рефакторите код.</p>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Вонючие комментарии</h2>
+			<pre>
+			  <code><del>// 38 — line height in Firefox</del></code>
+				<code>delta = event.deltaY * <mark>LINE_HEIGHT_IN_FIREFOX</mark></code>
+			</pre>
+
+			<pre>
+				<code><del>// make the user admin in the current project</del></code>
+				<code><mark>this.makeCurrentUserAdminInCurrentProject()</mark></code>
+				<code><del>var membership = account.memberships.where({ userId: user.id }).first()</del></code>
+				<code><del>...</del></code>
+			</pre>
+		</div>
+	</section>
+
+	<section class="slide shout">
+		<div>
+			<h2 style="text-align: center; font-size: 80px">
+				Комментарии — зло
+			</h2>
+		</div>
+	</section>
+
+	<section class="slide">
+		<div>
+			<h2>Спасибо</h2>
+			<p>
+				Пишите код, удаляйте комментарии, любите маму.
+			</p>
+			<p>
+				<a href="https://twitter.com/vazilla">twitter.com/vazilla</a><br />
+				<a href="mailto:vasily@polovnyov.ru">vasily@polovnyov.ru</a>
+			</p>
+		</div>
+	</section>
+
+	<div class="progress"><div></div></div>
+	<script src="shower/shower.min.js"></script>
+	<!-- Copyright © 2014 Yours Truly, Famous Inc. -->
+	<!-- Photos by John Carey, fiftyfootshadows.net -->
+</body>
+</html>
